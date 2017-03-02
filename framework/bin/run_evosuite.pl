@@ -221,8 +221,12 @@ foreach my $class (@classes) {
     my $config = "$UTIL_DIR/evo.config";
     # Set config to environment variable if defined
     $config = $ENV{EVO_CONFIG_FILE} // $config;
-
+	
     $project->run_evosuite($CRITERION, $BUDGET, $class, $TIMEOUT, $config, $log) or die "Failed to generate tests!";
+	
+	my $dir = "$OUT_DIR/$PID";
+	system("mkdir -p $dir && mv $TMP_DIR/evosuite-report/covered.goals $dir/$PID-$VID-evosuite-$CRITERION.$TID.covered.goals.$class");
+	system("mkdir -p $dir && mv $TMP_DIR/evosuite-report/$CRITERION.matrix $dir/$PID-$VID-evosuite-$CRITERION.$TID.matrix.$class");
 }
 # Copy log file for this version id and test criterion to output directory
 system("mv $log $LOG_DIR") == 0 or die "Cannot copy log file!";
@@ -259,7 +263,8 @@ if (system("tar -cjf $TMP_DIR/$archive -C $TMP_DIR/evosuite-$CRITERION/ .") != 0
     #
     # e.g., .../Lang/evosuite-branch/1
     #
-    my $dir = "$OUT_DIR/$PID/evosuite-$CRITERION/$TID";
+    # my $dir = "$OUT_DIR/$PID/evosuite-$CRITERION/$TID";
+	my $dir = "$OUT_DIR/$PID";
     system("mkdir -p $dir && mv $TMP_DIR/$archive $dir") == 0 or die "Cannot move test suite archive to output directory!";
 }
 
