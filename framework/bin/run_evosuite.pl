@@ -227,6 +227,7 @@ foreach my $class (@classes) {
 	my $dir = "$OUT_DIR/$PID";
 	system("mkdir -p $dir && mv $TMP_DIR/evosuite-report/covered.goals $dir/$PID-$VID-evosuite-$CRITERION.$TID.covered.goals.$class");
 	system("mkdir -p $dir && mv $TMP_DIR/evosuite-report/$CRITERION.matrix $dir/$PID-$VID-evosuite-$CRITERION.$TID.matrix.$class");
+	system("mkdir -p $dir && mv $TMP_DIR/evosuite-report/$CRITERION.fitnessMatrix $dir/$PID-$VID-evosuite-$CRITERION.$TID.fitnessMatrix.$class");
 }
 # Copy log file for this version id and test criterion to output directory
 system("mv $log $LOG_DIR") == 0 or die "Cannot copy log file!";
