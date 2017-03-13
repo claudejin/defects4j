@@ -49,7 +49,7 @@ echo
 echo "Setting up EvoSuite ... "
 EVOSUITE_VERSION="1.0.4"
 EVOSUITE_URL="https://github.com/claudejin/evosuite/releases/download/v${EVOSUITE_VERSION}"
-EVOSUITE_JAR="evosuite-${EVOSUITE_VERSION}.jar"
+EVOSUITE_JAR="evosuite-k-${EVOSUITE_VERSION}.jar"
 EVOSUITE_RT_JAR="evosuite-standalone-runtime-${EVOSUITE_VERSION}.jar"
 cd $DIR_LIB_GEN && [ ! -f $EVOSUITE_JAR ] \
                 && wget -nv $EVOSUITE_URL/$EVOSUITE_JAR
