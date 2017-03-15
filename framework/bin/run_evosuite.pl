@@ -226,6 +226,7 @@ foreach my $class (@classes) {
 	
 	my $dir = "$OUT_DIR/$PID";
 	system("mkdir -p $dir && mv $TMP_DIR/evosuite-report/covered.goals $dir/$PID-$VID-evosuite-$CRITERION.$TID.covered.goals.$class");
+	system("mkdir -p $dir && mv $TMP_DIR/evosuite-report/statistics.csv $dir/$PID-$VID-evosuite-$CRITERION.$TID.statistics.$class");
 	system("mkdir -p $dir && mv $TMP_DIR/evosuite-report/$CRITERION.matrix $dir/$PID-$VID-evosuite-$CRITERION.$TID.matrix.$class");
 	system("mkdir -p $dir && mv $TMP_DIR/evosuite-report/$CRITERION.fitnessMatrix $dir/$PID-$VID-evosuite-$CRITERION.$TID.fitnessMatrix.$class");
 }
